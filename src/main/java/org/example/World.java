@@ -44,8 +44,16 @@ public class World {
             for(int j=0; j<line.size(); j++) {
                 if(line.get(j).equals(cellChar)) {
                     var neighbors = getNeighbors(i,j).stream().filter(s -> s.equals(cellChar)).count();
-                    if(neighbors <= 2) {
+                    if(neighbors < 2) {
                         worldMatrix.get(i).set(j, emptyCellChar);
+                    }
+                    if(neighbors > 3) {
+                        worldMatrix.get(i).set(j, emptyCellChar);
+                    }
+                }else {
+                    var neighbors = getNeighbors(i,j).stream().filter(s -> s.equals(cellChar)).count();
+                    if(neighbors == 3) {
+                        worldMatrix.get(i).set(j, cellChar);
                     }
                 }
             }
@@ -56,10 +64,10 @@ public class World {
     }
     
     private String getCell(int x, int y) {
-        if(x < 0 || x >= this.worldMatrix.get(0).size()) {
+        if(x < 0 || x >= this.worldMatrix.size()) {
             return "";
         }
-        if(y<0 || y >= this.worldMatrix.size()) {
+        if(y<0 || y >= this.worldMatrix.get(0).size()) {
             return "";
         }
         return this.worldMatrix.get(x).get(y);

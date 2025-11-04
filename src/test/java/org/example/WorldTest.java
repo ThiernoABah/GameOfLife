@@ -78,4 +78,67 @@ class WorldTest {
         // Then
         assertEquals(expectedView, worldView);
     }
+
+    @Test
+    @DisplayName("Should keep cell when they have 2 or 3 neighbor for next cycle")
+    void testWorldCycleWithNeighbor() {
+        // Given
+        var worldPath = "worlds/with2Neighbor.txt";
+
+        var expectedView = """
+                ...
+                .*.
+                ...""";
+
+        var world = new World(worldPath);
+
+        // When
+        var worldView = world.getNextCycle();
+
+        // Then
+        assertEquals(expectedView, worldView);
+    }
+
+
+    @Test
+    @DisplayName("Should kill cells when they have more than 3 neighbors")
+    void testWorldCycleWithOverpopulation() {
+        // Given
+        var worldPath = "worlds/overpopulation.txt";
+
+
+        var expectedView = """
+                *.*
+                ...
+                *.*""";
+
+        var world = new World(worldPath);
+
+        // When
+        var worldView = world.getNextCycle();
+
+        // Then
+        assertEquals(expectedView, worldView);
+    }
+
+    @Test
+    @DisplayName("Should create a cell when a dead cell have exactly 3 neighbors")
+    void testWorldCycleWithReproduction() {
+        // Given
+        var worldPath = "worlds/reproduction.txt";
+
+
+        var expectedView = """
+                .**
+                .**
+                ...""";
+
+        var world = new World(worldPath);
+
+        // When
+        var worldView = world.getNextCycle();
+
+        // Then
+        assertEquals(expectedView, worldView);
+    }
 }
