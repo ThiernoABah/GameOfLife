@@ -60,5 +60,22 @@ class WorldTest {
         assertEquals(expectedView, worldView);
     }
 
+    @Test
+    @DisplayName("Should kill cell with no neighbor or fewer than two for next cycle")
+    void testSoloWorldCycle() {
+        // Given
+        var soloWorldPath = "worlds/soloWorld.txt";
 
+        var emptyWorldPath = "worlds/emptyWorld.txt";
+        var fileReader = new ResourcesFileReader(TEST_RESOURCE_PATH);
+        var expectedView = fileReader.getFileFromResources(emptyWorldPath);
+
+        var world = new World(soloWorldPath);
+
+        // When
+        var worldView = world.getNextCycle();
+
+        // Then
+        assertEquals(expectedView, worldView);
+    }
 }
