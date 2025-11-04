@@ -1,0 +1,35 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+# 🧠 IntelliJ IDEA
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+# 🧰 Build outputs
+target/
+build/
+
+# 💾 Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# 🪶 OS-specific files
+.DS_Store
+Thumbs.db
+
+# ☕ Maven
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/maven-wrapper.properties
+.settings/
+.classpath
+.project
+
+# 🧪 Test reports
+surefire-reports/
+failsafe-reports/
